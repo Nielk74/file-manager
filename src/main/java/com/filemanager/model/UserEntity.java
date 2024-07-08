@@ -5,7 +5,8 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -15,7 +16,7 @@ public class UserEntity {
 
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        private int id;
 
         @Column(name = "username", nullable = false, unique = true)
         private String username;
@@ -31,5 +32,5 @@ public class UserEntity {
                 inverseJoinColumns = @JoinColumn(
                         name = "role_id", referencedColumnName = "id")
         )
-        private HashSet<Role> roles = new HashSet<>();
+        private List<Role> roles = new ArrayList<>();
 }
